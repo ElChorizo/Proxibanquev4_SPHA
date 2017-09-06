@@ -24,44 +24,75 @@
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText id="name" value="#{customerMB.bean.name}"
-							required="true" label="Nom" requiredMessage="Required" />
-
+							required="true" label="Nom" requiredMessage="Champ obligatoire"
+							maxlength="30"
+							validatorMessage="Seules les lettres (aA-zZ) sont autorisées.">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						
 						<h:outputText value="Prénom" for="firstname"
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText id="firstname" value="#{customerMB.bean.firstname}"
-							required="true" label="Prénom" requiredMessage="Required" />
+							required="true" label="Prénom" requiredMessage="Champ obligatoire" 
+							maxlength="30"
+							validatorMessage="Seules les lettres (aA-zZ) sont autorisées.">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+							<f:validateLength minimum="2" />
+						</p:inputText>
 
 						<h:outputText value="Adresse" for="address"
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText id="address" value="#{customerMB.bean.address}"
-							required="true" label="Adresse" requiredMessage="Required" />
+							required="true" label="Adresse" requiredMessage="Champ obligatoire" 
+							maxlength="40"/>
 
 						<h:outputText value="Code postal" for="cp"
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText id="cp" value="#{customerMB.bean.cp}"
-							required="true" label="Code postal" requiredMessage="Required" />
-							
+							required="true" label="Code postal" requiredMessage="Champ obligatoire"
+							maxlength="10" validatorMessage="Seuls les chiffres sont autorisés.">
+							<f:validateRegex pattern="^[_0-9]+$" />
+						</p:inputText>
+						
 							<h:outputText value="Ville" for="town"
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText id="town" value="#{customerMB.bean.town}"
-							required="true" label="Ville" requiredMessage="Required" />
+							required="true" label="Ville" requiredMessage="Champ obligatoire" 
+							maxlength="30"
+							validatorMessage="Seules les lettres (aA-zZ) sont autorisées.">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+							<f:validateLength minimum="2" />
+						</p:inputText>
 
 						<h:outputText value="Email" for="email"
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText id="email" value="#{customerMB.bean.email}"
-							required="true" label="Email" requiredMessage="Required" />
+							required="true" label="Email" requiredMessage="Champ obligatoire" 
+							maxlength="40"
+							validatorMessage="Entrer un format d'adresse e-mail valide (ex: client@proxibanque.fr)">
+
+							<f:validateRegex
+								pattern="^([_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{1,6}))?$" />
+						</p:inputText>
 
 						<h:outputText value="Téléphone" for="tel"
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText id="tel" value="#{customerMB.bean.tel}" required="true"
-							label="Téléphone" requiredMessage="Required" />
-							
+							label="Téléphone" requiredMessage="Champ obligatoire" 
+							maxlength="10"
+							validatorMessage="Seuls les chiffres sont autorisés.">
+							<f:validateRegex pattern="^[_0-9]+$" />
+						</p:inputText>
 
 <!-- 						<h:outputLabel for="Items" value="Items " /> -->
 
@@ -90,14 +121,6 @@
 
 
 					</h:panelGrid>
-
-
-
-
-
-
-
-
 
 
 
