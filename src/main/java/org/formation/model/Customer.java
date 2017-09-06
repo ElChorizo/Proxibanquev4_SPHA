@@ -9,6 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.ManyToOne;
+
+import javax.persistence.JoinColumn;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,11 +36,29 @@ public class Customer {
 	private String email;
 	private String tel;
 	private String cp;
-	
-//	@OneToMany (mappedBy="customer", orphanRemoval=true, cascade= CascadeType.ALL)
-//	private List<Account> listAccount=new ArrayList<>();
 	private String town;
 	
+
+	@ManyToOne
+	private Advisor advisor;
+	
+	public Advisor getAdvisor() {
+		return advisor;
+	}
+
+
+	public void setAdvisor(Advisor advisor) {
+		this.advisor = advisor;
+	}
+
+
+
+	@OneToMany (cascade=CascadeType.ALL)
+	@JoinColumn(name="customer_id")
+    private List<Account> listAccount=new ArrayList<>();
+	
+		
+
 	public Long getId() {
 		return id;
 	}
@@ -133,27 +156,28 @@ public class Customer {
 
 
 
-//	public List<Account> getListAccount() {
-//		return listAccount;
-//	}
-//
-//
-//	public void setListAccount(List<Account> listAccount) {
-//		this.listAccount = listAccount;
-//	}
-//
-//public void addAccount(Account account) {
-//	listAccount.add(account);
-//	account.setCustomer(this);
-//}
+	public List<Account> getListAccount() {
+		return listAccount;
+	}
+
+	public void setListAccount(List<Account> listAccount) {
+		this.listAccount = listAccount;
+	}
+
+	public void addAccount(Account account) {
+		listAccount.add(account);
+		account.setCustomer(this);
+	}
 
 
 	@Override
 	public String toString() {
-		return "Customer [ " + ", address="
-				+ address + ", email=" + email + ", tel=" + tel + ", cp=" + cp + "]";
+		return "Customer [id=" + id + ", name=" + name + ", firstname=" + firstname + ", address=" + address
+				+ ", email=" + email + ", tel=" + tel + ", cp=" + cp + ", town=" + town + "]";
 	}
 
+
+	
 	
 
 }
