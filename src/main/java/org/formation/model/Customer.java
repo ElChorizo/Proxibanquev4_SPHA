@@ -38,7 +38,7 @@ public class Customer {
 	@JoinColumn(name="customer_id")
     private List<Account> listAccount=new ArrayList<>();
 	
-	
+		
 	public Long getId() {
 		return id;
 	}
