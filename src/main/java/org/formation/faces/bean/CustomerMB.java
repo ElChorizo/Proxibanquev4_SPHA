@@ -137,12 +137,14 @@ public class CustomerMB implements Serializable{
 	public List<Account> getAllAccounts() {
 		List<Account> tmpList = new ArrayList<Account>();
 		try {
-			tmpList.addAll(serviceAccount.findAll());
+			tmpList.addAll(serviceAccount.findByProperty("customer_id", this.beanSelected.getId()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return tmpList;
 	}
+	
+	
 
 
 	public IServiceCustomer getCustomer() {

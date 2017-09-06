@@ -82,14 +82,35 @@
 				<p:dialog header="Détails" widgetVar="detailsDlg" resizable="false"
 					width="750" height="400" showEffect="clip" hideEffect="clip"
 					modal="true">
-
+					
 					<h:panelGrid id="display" columns="2" cellpadding="4"
-						style="margin:0 auto;">
-
+						style="margin:0 auto; text-align:center" layout="block">
 						<h:outputText value="Nom: "
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.customer.name}"
 							style="padding-left: 30px; padding-right: 30px;" />
+						<h:outputText value="Prénom: "
+							style="padding-left: 30px; padding-right: 30px;" />
+						<h:outputText value="#{accountMB.beanSelected.customer.firstname}"
+							style="padding-left: 30px; padding-right: 30px;" />
+						<h:outputText value="Adresse: "
+							style="padding-left: 30px; padding-right: 30px;" />
+						<h:outputText value="#{accountMB.beanSelected.customer.address}"
+							style="padding-left: 30px; padding-right: 30px;" />
+								<h:outputText value="Code postal: "
+							style="padding-left: 30px; padding-right: 30px;" />
+						<h:outputText value="#{accountMB.beanSelected.customer.cp}"
+							style="padding-left: 30px; padding-right: 30px;" />
+							<h:outputText value="Ville: "
+							style="padding-left: 30px; padding-right: 30px;" />
+						<h:outputText value="#{accountMB.beanSelected.customer.town}"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+					</h:panelGrid>
+					<h:panelGrid id="display" columns="2" cellpadding="4"
+						style="margin:0 auto;">
+
+
 						<h:outputText value="Numéro de compte"
 							style="padding-left: 30px; padding-right: 30px;" />
 
@@ -115,15 +136,8 @@
 
 					</h:panelGrid>
 
-					<p:outputPanel layout="block" style="text-align:center">
-						<br />
-						<br />
-						<p:commandButton value="Editer"
-							update=":form1:objects, :form1:messages"
-							actionListener="#{accountMB.update}"
-							oncomplete="PF('detailsDlg').hide()" />
-						<p:commandButton value="Annuler" onclick="PF('detailsDlg').hide()"
-							type="button" />
+					<p:outputPanel >
+
 					</p:outputPanel>
 
 				</p:dialog>

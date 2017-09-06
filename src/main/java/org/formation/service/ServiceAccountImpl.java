@@ -42,10 +42,6 @@ public class ServiceAccountImpl implements IServiceAccount {
 		return accountDao.findAll();
 	}
 
-	@Override
-	public List<Account> findByProperty(String prop, Object val) throws Exception {
-		return accountDao.findByProperty(prop, val);
-	}
 
 	@Override
 	public List<Account> findInRange(int firstResult, int maxResults) throws Exception {
@@ -56,6 +52,12 @@ public class ServiceAccountImpl implements IServiceAccount {
 	public long count() throws Exception {
 		
 		return 0;
+	}
+
+	@Override
+	public List<Account> findByProperty(String prop, Object val) throws Exception {
+		return accountDao.findByProperty(prop, val);
+		
 	}
 
 }

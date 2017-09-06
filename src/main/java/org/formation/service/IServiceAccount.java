@@ -21,4 +21,6 @@ public interface IServiceAccount {
 	List<Account> findInRange(int firstResult, int maxResults) throws Exception;
 
 	long count() throws Exception;
+
+	
 }

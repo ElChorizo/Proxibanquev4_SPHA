@@ -30,12 +30,18 @@
 						<h:outputText value="#{object.firstname}" />
 					</p:column>
 
-
+					<p:column headerText="Liste des comptes" style="width:15%">
+						<p:commandLink update=":form1:display"
+							oncomplete="PF('account').show()" title="Delete">
+							<f:setPropertyActionListener value="#{object}"
+								target="#{customerMB.beanSelected}" />
+							<h:outputText value="voir compte(s)" />
+						</p:commandLink>
+					</p:column>
 
 					<p:column headerText="Supprimer" style="width:8%">
 						<p:commandLink update=":form1:display"
-							oncomplete="PF('confirmDeleteDlg').show()"
-							 title="Delete">
+							oncomplete="PF('confirmDeleteDlg').show()" title="Delete">
 							<f:setPropertyActionListener value="#{object}"
 								target="#{customerMB.beanSelected}" />
 							<h:outputText styleClass="ui-icon ui-icon-close" />
@@ -72,6 +78,13 @@
 
 				</p:dialog>
 
+				<p:dialog header="Liste des compte(s)" widgetVar="account"
+					resizable="false" width="400" height="60" showEffect="clip"
+					hideEffect="clip" modal="true">
+					
+
+
+				</p:dialog>
 
 
 				<p:dialog header="Update" widgetVar="detailsDlg" resizable="false"
