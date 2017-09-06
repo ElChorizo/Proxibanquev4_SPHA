@@ -10,10 +10,7 @@
 	<ui:composition template="/WEB-INF/tags/layout.xhtml">
 		<ui:define name="content">
 
-<<<<<<< HEAD:src/main/webapp/views/account/all.xhtml
-=======
 
->>>>>>> ad4e2c77a8938d4cc48078102f56040e1e751330:src/main/webapp/manager/account/all.xhtml
 			<h:form id="form1">
 
 				<p:growl id="messages" showDetail="true" life="3000" />
@@ -25,12 +22,7 @@
 					rowKey="#{object.accountNumber}">
 
 					<p:column headerText="Numéro de compte"
-<<<<<<< HEAD:src/main/webapp/views/account/all.xhtml
-						sortBy="#{object.accountNumber}"
-						filterBy="#{object.accountNumber}" filterMatchMode="contains">
-=======
 						sortBy="#{object.accountNumber}">
->>>>>>> ad4e2c77a8938d4cc48078102f56040e1e751330:src/main/webapp/manager/account/all.xhtml
 						<h:outputText value="#{object.accountNumber}" />
 					</p:column>
 
@@ -38,25 +30,12 @@
 						<h:outputText value="#{object.date}" />
 					</p:column>
 
-<<<<<<< HEAD:src/main/webapp/views/account/all.xhtml
-
-					<p:column headerText="Solde" sortBy="#{object.balance}"
-						filterBy="#{object.balance}" filterMatchMode="contains">
-						<h:outputText value="#{object.balance}" />
-					</p:column>
-
-					<p:column headerText="Supprimer" style="width:8%">
-=======
 					<p:column headerText="Solde" sortBy="#{object.balance}">
-
 						<h:outputText value="#{object.balance}" />
 					</p:column>
-
-
 
 
 					<p:column headerText="Détails" style="width:8%">
->>>>>>> ad4e2c77a8938d4cc48078102f56040e1e751330:src/main/webapp/manager/account/all.xhtml
 						<p:commandLink update=":form1:display"
 							oncomplete="PF('detailsDlg').show()"
 							image="ui-icon ui-icon-search" title="Details">
@@ -68,13 +47,8 @@
 
 					<p:column headerText="Supprimer" style="width:8%">
 						<p:commandLink update=":form1:display"
-<<<<<<< HEAD:src/main/webapp/views/account/all.xhtml
-							oncomplete="PF('detailsDlg').show()"
-							image="ui-icon ui-icon-search" title="Details">
-=======
 							oncomplete="PF('confirmDeleteDlg').show()"
 							image="ui-icon ui-icon-close" title="Delete">
->>>>>>> ad4e2c77a8938d4cc48078102f56040e1e751330:src/main/webapp/manager/account/all.xhtml
 							<f:setPropertyActionListener value="#{object}"
 								target="#{accountMB.beanSelected}" />
 							<h:outputText styleClass="ui-icon ui-icon-close" />
@@ -101,12 +75,10 @@
 				</p:dialog>
 
 
-
-<<<<<<< HEAD:src/main/webapp/views/account/all.xhtml
 				<p:dialog header="Détails" widgetVar="detailsDlg" resizable="false"
 					width="750" height="400" showEffect="clip" hideEffect="clip"
 					modal="true">
-					
+
 					<h:panelGrid id="display" columns="2" cellpadding="4"
 						style="margin:0 auto; text-align:center" layout="block">
 						<h:outputText value="Nom: "
@@ -121,56 +93,16 @@
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.customer.address}"
 							style="padding-left: 30px; padding-right: 30px;" />
-								<h:outputText value="Code postal: "
+						<h:outputText value="Code postal: "
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.customer.cp}"
 							style="padding-left: 30px; padding-right: 30px;" />
-							<h:outputText value="Ville: "
+						<h:outputText value="Ville: "
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.customer.town}"
 							style="padding-left: 30px; padding-right: 30px;" />
-=======
-				<p:dialog header="Editer" widgetVar="detailsDlg" resizable="false"
-					width="750" height="400" showEffect="clip" hideEffect="clip"
-					modal="true">
->>>>>>> ad4e2c77a8938d4cc48078102f56040e1e751330:src/main/webapp/manager/account/all.xhtml
 
 					</h:panelGrid>
-					<h:panelGrid id="display" columns="2" cellpadding="4"
-						style="margin:0 auto;">
-
-
-						<h:outputText value="Numéro de compte"
-							style="padding-left: 30px; padding-right: 30px;" />
-
-						<p:inputText value="#{accountMB.beanSelected.accountNumber}" />
-
-
-
-						<h:outputText value="Date d'ouverture"
-							style="padding-left: 30px; padding-right: 30px;" />
-						<p:inputText value="#{accountMB.beanSelected.date}" />
-
-
-						<h:outputText value="Solde"
-							style="padding-left: 30px; padding-right: 30px;" />
-						<p:inputText value="#{accountMB.beanSelected.balance}" />
-
-<<<<<<< HEAD:src/main/webapp/views/account/all.xhtml
-
-
-
-
-
-
-
-=======
->>>>>>> ad4e2c77a8938d4cc48078102f56040e1e751330:src/main/webapp/manager/account/all.xhtml
-					</h:panelGrid>
-
-					<p:outputPanel >
-
-					</p:outputPanel>
 
 				</p:dialog>
 
