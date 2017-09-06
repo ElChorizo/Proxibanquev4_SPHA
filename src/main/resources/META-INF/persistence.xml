@@ -10,6 +10,7 @@
 		<class>org.formation.model.Item</class>
 		<class>org.formation.model.Order</class>
 		<class>org.formation.model.Customer</class>
+		<class>org.formation.model.Advisor</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />

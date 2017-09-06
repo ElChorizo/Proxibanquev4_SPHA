@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -36,6 +37,19 @@ public class Customer {
 //	private List<Account> listAccount=new ArrayList<>();
 	private String town;
 	
+	@ManyToOne
+	private Advisor advisor;
+	
+	public Advisor getAdvisor() {
+		return advisor;
+	}
+
+
+	public void setAdvisor(Advisor advisor) {
+		this.advisor = advisor;
+	}
+
+
 	public Long getId() {
 		return id;
 	}
