@@ -14,21 +14,32 @@
 
 				<p:growl id="messages" showDetail="true" life="3000" />
 				<p:dataTable id="objects" var="object" value="#{customerMB.list}"
-					styleClass="et_datatable" emptyMessage="Empty..." editable="true"
+					styleClass="et_datatable" emptyMessage="Pas de client enregistré" editable="true"
 					paginator="true" rows="10"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15" selectionMode="single"
-					rowKey="#{object.id}" filteredValue="#{customerMB.listSelected}">
+					rowKey="#{object.id}">
 
-					<p:column headerText="Nom" sortBy="#{object.name}"
-						filterBy="#{object.customer}" filterMatchMode="contains">
+					<p:column headerText="Nom" sortBy="#{object.name}">
 						<h:outputText value="#{object.name}" />
 					</p:column>
 
-					<p:column headerText="Prénom" sortBy="#{object.firstname}"
-						filterBy="#{object.firstname}" filterMatchMode="contains">
+					<p:column headerText="Prénom" sortBy="#{object.firstname}">
 						<h:outputText value="#{object.firstname}" />
 					</p:column>
+
+
+					<p:column headerText="Détails" style="width:8%">
+						<p:commandLink update=":form1:display"
+							oncomplete="PF('detailsDlg').show()"
+							image="ui-icon ui-icon-search" title="Details">
+
+							<f:setPropertyActionListener value="#{object}"
+								target="#{customerMB.beanSelected}" />
+							<h:outputText styleClass="ui-icon ui-icon-search" />
+						</p:commandLink>
+					</p:column>
+
 
 					<p:column headerText="Supprimer" style="width:8%">
 						<p:commandLink update=":form1:display"
@@ -36,16 +47,6 @@
 							<f:setPropertyActionListener value="#{object}"
 								target="#{customerMB.beanSelected}" />
 							<h:outputText styleClass="ui-icon ui-icon-close" />
-						</p:commandLink>
-					</p:column>
-
-					<p:column headerText="Details" style="width:8%">
-						<p:commandLink update=":form1:display"
-							oncomplete="PF('detailsDlg').show()"
-							image="ui-icon ui-icon-search" title="Details">
-							<f:setPropertyActionListener value="#{object}"
-								target="#{customerMB.beanSelected}" />
-							<h:outputText styleClass="ui-icon ui-icon-search" />
 						</p:commandLink>
 					</p:column>
 
@@ -71,41 +72,106 @@
 
 
 
-				<p:dialog header="Update" widgetVar="detailsDlg" resizable="false"
+
+				<p:dialog header="Editer" widgetVar="detailsDlg" resizable="false"
 					width="750" height="400" showEffect="clip" hideEffect="clip"
 					modal="true">
 
 					<h:panelGrid id="display" columns="2" cellpadding="4"
 						style="margin:0 auto;">
 
-						<h:outputText value="Nom" for="customer"
+
+						<h:outputText value="Nom"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText id="name" value="#{customerMB.beanSelected.name}"
-							label="Nom" />
+						<p:inputText value="#{customerMB.beanSelected.name}" label="Nom"
+							requiredMessage="Champ obligatoire"
+							validatorMessage="Seules les lettres (aA-zZ) sont autorisées.">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+							<f:validateLength minimum="2" maximum="30" />
+						</p:inputText>
 
-						<h:outputText value="Prénom" for="reference"
+						<h:outputText value="Prénom"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<p:inputText id="firstname"
-							value="#{customerMB.beanSelected.firstname}" label="Prénom" />
+						<p:inputText id="firstname" value="#{customerMB.beanSelected.firstname}"
+							label="Prénom" requiredMessage="Champ obligatoire"
+							validatorMessage="Seules les lettres (aA-zZ) sont autorisées.">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+							<f:validateLength minimum="2" maximum="30" />
+						</p:inputText>
 
+						<h:outputText value="Adresse"
+							style="padding-left: 30px; padding-right: 30px;" />
 
+						<p:inputText value="#{customerMB.beanSelected.address}" label="Adresse"
+							requiredMessage="Champ obligatoire">
+							<f:validateRegex
+								pattern="^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$">
+							</f:validateRegex>
+
+						</p:inputText>
+
+						<h:outputText value="Code postal"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText value="#{customerMB.beanSelected.cp}" label="Code postal"
+							requiredMessage="Champ obligatoire"
+							validatorMessage="Seuls les chiffres sont autorisés.">
+							<f:validateRegex pattern="^[_0-9]+$" />
+							<f:validateLength minimum="5" maximum="5" />
+						</p:inputText>
+
+						<h:outputText value="Ville"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="town" value="#{customerMB.beanSelected.town}"
+							label="Ville" requiredMessage="Champ obligatoire"
+							validatorMessage="Seules les lettres (aA-zZ) sont autorisées.">
+							<f:validateRegex
+								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
+							<f:validateLength minimum="2" maximum="30" />
+						</p:inputText>
+
+						<h:outputText value="Email"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="email" value="#{customerMB.beanSelected.email}"
+							label="Email" requiredMessage="Champ obligatoire"
+							validatorMessage="Entrer un format d'adresse e-mail valide (ex: client@proxibanque.fr)">
+
+							<f:validateRegex
+								pattern="^([_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{1,6}))?$" />
+							<f:validateLength minimum="5" maximum="40" />
+						</p:inputText>
+
+						<h:outputText value="Téléphone"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText value="#{customerMB.beanSelected.tel}" label="Téléphone"
+							requiredMessage="Champ obligatoire"
+							validatorMessage="Seuls les chiffres sont autorisés.">
+							<f:validateRegex pattern="^[_0-9]+$" />
+							<f:validateLength minimum="10" maximum="10" />
+						</p:inputText>
+
+						<h:inputHidden value="#{customerMB.beanSelected.id}" />
 					</h:panelGrid>
 
 					<p:outputPanel layout="block" style="text-align:center">
 						<br />
 						<br />
-						<p:commandButton value="Update"
+						<p:commandButton value="Editer"
 							update=":form1:objects, :form1:messages"
 							actionListener="#{customerMB.update}"
 							oncomplete="PF('detailsDlg').hide()" />
-						<p:commandButton value="Cancel" onclick="PF('detailsDlg').hide()"
+						<p:commandButton value="Annuler" onclick="PF('detailsDlg').hide()"
 							type="button" />
 					</p:outputPanel>
 
 				</p:dialog>
-
 
 
 			</h:form>

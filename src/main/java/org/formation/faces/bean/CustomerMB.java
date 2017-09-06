@@ -77,12 +77,10 @@ public class CustomerMB implements Serializable{
 			this.bean.addAccount(check);
 			this.bean.addAccount(savings);
 			customer.persist(this.bean);
-			System.out.println(this.bean);
 			refreshList();
 			notificationSuccess("persist item");
 		} catch (Exception e) {
 			notificationError(e,"persist item");
-			System.out.println("pb :"+this.bean);
 			e.printStackTrace();
 		}
 	}
