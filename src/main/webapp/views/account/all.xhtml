@@ -9,20 +9,20 @@
 <h:body>
 	<ui:composition template="/WEB-INF/tags/layout.xhtml">
 		<ui:define name="content">
-		
+
 			<h:form id="form1">
 
 				<p:growl id="messages" showDetail="true" life="3000" />
-				<p:dataTable id="objects" var="object"
-					value="#{accountMB.list}" styleClass="et_datatable"
-					emptyMessage="Pas de compte existant" editable="true" paginator="true"
-					rows="10"
+				<p:dataTable id="objects" var="object" value="#{accountMB.list}"
+					styleClass="et_datatable" emptyMessage="Pas de compte existant"
+					editable="true" paginator="true" rows="10"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15" selectionMode="single"
 					rowKey="#{object.accountNumber}"
 					filteredValue="#{accountMB.listSelected}">
 
-					<p:column headerText="Numéro de compte" sortBy="#{object.accountNumber}"
+					<p:column headerText="Numéro de compte"
+						sortBy="#{object.accountNumber}"
 						filterBy="#{object.accountNumber}" filterMatchMode="contains">
 						<h:outputText value="#{object.accountNumber}" />
 					</p:column>
@@ -31,15 +31,12 @@
 						filterBy="#{object.date}" filterMatchMode="contains">
 						<h:outputText value="#{object.date}" />
 					</p:column>
-					
-					
+
+
 					<p:column headerText="Solde" sortBy="#{object.balance}"
 						filterBy="#{object.balance}" filterMatchMode="contains">
 						<h:outputText value="#{object.balance}" />
 					</p:column>
-
-
-
 
 					<p:column headerText="Supprimer" style="width:8%">
 						<p:commandLink update=":form1:display"
@@ -52,8 +49,8 @@
 					</p:column>
 					<p:column headerText="Détails" style="width:8%">
 						<p:commandLink update=":form1:display"
-							oncomplete="PF('detailsDlg').show()" image="ui-icon ui-icon-search"
-							title="Details">
+							oncomplete="PF('detailsDlg').show()"
+							image="ui-icon ui-icon-search" title="Details">
 							<f:setPropertyActionListener value="#{object}"
 								target="#{accountMB.beanSelected}" />
 							<h:outputText styleClass="ui-icon ui-icon-search" />
@@ -64,31 +61,35 @@
 				</p:dataTable>
 
 
-				<p:dialog header="Etes-vous certain de vouloir supprimer ce compte ? Cette opération est irréversible." widgetVar="confirmDeleteDlg"
-					resizable="false" width="400" height="60" showEffect="clip"
-					hideEffect="clip" modal="true">
+				<p:dialog
+					header="Etes-vous certain de vouloir supprimer ce compte ? Cette opération est irréversible."
+					widgetVar="confirmDeleteDlg" resizable="false" width="400"
+					height="60" showEffect="clip" hideEffect="clip" modal="true">
 
 					<p:outputPanel layout="block" style="text-align:center">
 						<p:commandButton value="Oui"
 							update=":form1:messages,:form1:objects"
 							actionListener="#{accountMB.delete}"
 							oncomplete="PF('confirmDeleteDlg').hide()" />
-						<p:commandButton value="Non" onclick="PF('confirmDeleteDlg').hide()"
-							type="button" />
+						<p:commandButton value="Non"
+							onclick="PF('confirmDeleteDlg').hide()" type="button" />
 					</p:outputPanel>
 
 				</p:dialog>
 
 
 
-				<p:dialog header="Editer" widgetVar="detailsDlg"
-					resizable="false" width="750" height="400" showEffect="clip"
-					hideEffect="clip" modal="true">
+				<p:dialog header="Détails" widgetVar="detailsDlg" resizable="false"
+					width="750" height="400" showEffect="clip" hideEffect="clip"
+					modal="true">
 
 					<h:panelGrid id="display" columns="2" cellpadding="4"
 						style="margin:0 auto;">
 
-
+						<h:outputText value="Nom: "
+							style="padding-left: 30px; padding-right: 30px;" />
+						<h:outputText value="#{accountMB.beanSelected.customer.name}"
+							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="Numéro de compte"
 							style="padding-left: 30px; padding-right: 30px;" />
 
@@ -105,7 +106,7 @@
 							style="padding-left: 30px; padding-right: 30px;" />
 						<p:inputText value="#{accountMB.beanSelected.balance}" />
 
-						
+
 
 
 
