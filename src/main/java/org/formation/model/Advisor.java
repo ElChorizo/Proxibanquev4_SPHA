@@ -19,12 +19,11 @@ public class Advisor {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	public Long getId() {
-		return id;
-	}
+	private String name;
+	private String firstname;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="ID_CLIENT")
+	@JoinColumn(name="ID_ADVISOR")
 	private Collection<Customer> customers = new LinkedHashSet<Customer>();
 
 	public Advisor() {
@@ -32,6 +31,10 @@ public class Advisor {
 	
 	}
 
+	public Long getId() {
+		return id;
+	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -60,7 +63,5 @@ public class Advisor {
 		this.customers = customers;
 	}
 
-	private String name;
-	private String firstname;
 	
 }
