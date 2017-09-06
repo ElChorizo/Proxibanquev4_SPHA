@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -10,6 +10,10 @@
 	<ui:composition template="/WEB-INF/tags/layout.xhtml">
 		<ui:define name="content">
 
+<<<<<<< HEAD:src/main/webapp/views/account/all.xhtml
+=======
+
+>>>>>>> ad4e2c77a8938d4cc48078102f56040e1e751330:src/main/webapp/manager/account/all.xhtml
 			<h:form id="form1">
 
 				<p:growl id="messages" showDetail="true" life="3000" />
@@ -18,20 +22,23 @@
 					editable="true" paginator="true" rows="10"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15" selectionMode="single"
-					rowKey="#{object.accountNumber}"
-					filteredValue="#{accountMB.listSelected}">
+					rowKey="#{object.accountNumber}">
 
 					<p:column headerText="Numéro de compte"
+<<<<<<< HEAD:src/main/webapp/views/account/all.xhtml
 						sortBy="#{object.accountNumber}"
 						filterBy="#{object.accountNumber}" filterMatchMode="contains">
+=======
+						sortBy="#{object.accountNumber}">
+>>>>>>> ad4e2c77a8938d4cc48078102f56040e1e751330:src/main/webapp/manager/account/all.xhtml
 						<h:outputText value="#{object.accountNumber}" />
 					</p:column>
 
-					<p:column headerText="Date d'ouverture" sortBy="#{object.date}"
-						filterBy="#{object.date}" filterMatchMode="contains">
+					<p:column headerText="Date d'ouverture" sortBy="#{object.date}">
 						<h:outputText value="#{object.date}" />
 					</p:column>
 
+<<<<<<< HEAD:src/main/webapp/views/account/all.xhtml
 
 					<p:column headerText="Solde" sortBy="#{object.balance}"
 						filterBy="#{object.balance}" filterMatchMode="contains">
@@ -39,15 +46,17 @@
 					</p:column>
 
 					<p:column headerText="Supprimer" style="width:8%">
-						<p:commandLink update=":form1:display"
-							oncomplete="PF('confirmDeleteDlg').show()"
-							image="ui-icon ui-icon-close" title="Delete">
-							<f:setPropertyActionListener value="#{object}"
-								target="#{accountMB.beanSelected}" />
-							<h:outputText styleClass="ui-icon ui-icon-close" />
-						</p:commandLink>
+=======
+					<p:column headerText="Solde" sortBy="#{object.balance}">
+
+						<h:outputText value="#{object.balance}" />
 					</p:column>
+
+
+
+
 					<p:column headerText="Détails" style="width:8%">
+>>>>>>> ad4e2c77a8938d4cc48078102f56040e1e751330:src/main/webapp/manager/account/all.xhtml
 						<p:commandLink update=":form1:display"
 							oncomplete="PF('detailsDlg').show()"
 							image="ui-icon ui-icon-search" title="Details">
@@ -57,6 +66,20 @@
 						</p:commandLink>
 					</p:column>
 
+					<p:column headerText="Supprimer" style="width:8%">
+						<p:commandLink update=":form1:display"
+<<<<<<< HEAD:src/main/webapp/views/account/all.xhtml
+							oncomplete="PF('detailsDlg').show()"
+							image="ui-icon ui-icon-search" title="Details">
+=======
+							oncomplete="PF('confirmDeleteDlg').show()"
+							image="ui-icon ui-icon-close" title="Delete">
+>>>>>>> ad4e2c77a8938d4cc48078102f56040e1e751330:src/main/webapp/manager/account/all.xhtml
+							<f:setPropertyActionListener value="#{object}"
+								target="#{accountMB.beanSelected}" />
+							<h:outputText styleClass="ui-icon ui-icon-close" />
+						</p:commandLink>
+					</p:column>
 
 				</p:dataTable>
 
@@ -79,6 +102,7 @@
 
 
 
+<<<<<<< HEAD:src/main/webapp/views/account/all.xhtml
 				<p:dialog header="Détails" widgetVar="detailsDlg" resizable="false"
 					width="750" height="400" showEffect="clip" hideEffect="clip"
 					modal="true">
@@ -105,6 +129,11 @@
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.customer.town}"
 							style="padding-left: 30px; padding-right: 30px;" />
+=======
+				<p:dialog header="Editer" widgetVar="detailsDlg" resizable="false"
+					width="750" height="400" showEffect="clip" hideEffect="clip"
+					modal="true">
+>>>>>>> ad4e2c77a8938d4cc48078102f56040e1e751330:src/main/webapp/manager/account/all.xhtml
 
 					</h:panelGrid>
 					<h:panelGrid id="display" columns="2" cellpadding="4"
@@ -127,6 +156,7 @@
 							style="padding-left: 30px; padding-right: 30px;" />
 						<p:inputText value="#{accountMB.beanSelected.balance}" />
 
+<<<<<<< HEAD:src/main/webapp/views/account/all.xhtml
 
 
 
@@ -134,6 +164,8 @@
 
 
 
+=======
+>>>>>>> ad4e2c77a8938d4cc48078102f56040e1e751330:src/main/webapp/manager/account/all.xhtml
 					</h:panelGrid>
 
 					<p:outputPanel >

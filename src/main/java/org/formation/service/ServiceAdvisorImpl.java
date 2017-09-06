@@ -4,9 +4,13 @@ import java.util.List;
 
 import org.formation.dao.AdvisorDao;
 import org.formation.model.Advisor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service("serviceAdvisor")
 public class ServiceAdvisorImpl implements IServiceAdvisor{
 
+	@Autowired
 	private AdvisorDao advisor;
 	
 	@Override
