@@ -9,7 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.ManyToOne;
+
 import javax.persistence.JoinColumn;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,11 +38,27 @@ public class Customer {
 	private String cp;
 	private String town;
 	
+
+	@ManyToOne
+	private Advisor advisor;
+	
+	public Advisor getAdvisor() {
+		return advisor;
+	}
+
+
+	public void setAdvisor(Advisor advisor) {
+		this.advisor = advisor;
+	}
+
+
+
 	@OneToMany (cascade=CascadeType.ALL)
 	@JoinColumn(name="customer_id")
     private List<Account> listAccount=new ArrayList<>();
 	
 		
+
 	public Long getId() {
 		return id;
 	}
