@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="/WEB-INF/tags/layout.xhtml">
+		<ui:define name="content">
+
+
+
+			<h:form id="form1" style="">
+				<p:growl id="messages" showDetail="true" />
+
+
+				<p:panel id="panel">
+					<br />
+					<h:panelGrid id="display" columns="2" cellpadding="4">
+
+						<h:outputText value="Nom" for="name"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="name" value="#{customerMB.bean.name}"
+							required="true" label="Nom" requiredMessage="Required" />
+
+						<h:outputText value="Prénom" for="firstname"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="firstname" value="#{customerMB.bean.firstname}"
+							required="true" label="Prénom" requiredMessage="Required" />
+
+						<h:outputText value="Adresse" for="address"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="address" value="#{customerMB.bean.address}"
+							required="true" label="Adresse" requiredMessage="Required" />
+
+						<h:outputText value="Code postal" for="cp"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="cp" value="#{customerMB.bean.cp}"
+							required="true" label="Code postal" requiredMessage="Required" />
+							
+							<h:outputText value="Ville" for="town"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="town" value="#{customerMB.bean.town}"
+							required="true" label="Ville" requiredMessage="Required" />
+
+						<h:outputText value="Email" for="email"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="email" value="#{customerMB.bean.email}"
+							required="true" label="Email" requiredMessage="Required" />
+
+						<h:outputText value="Téléphone" for="tel"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText id="tel" value="#{customerMB.bean.tel}" required="true"
+							label="Téléphone" requiredMessage="Required" />
+
+<!-- 						<h:outputLabel for="Items" value="Items " /> -->
+
+<!-- 						<p:selectManyMenu id="Items" value="#{orderMB.listItem}" -->
+<!-- 							showCheckbox="true" style="width:250px;height:200px"> -->
+<!-- 							<f:selectItems value="#{orderMB.allItems}" var="item" -->
+<!-- 								itemLabel="#{item.product}" itemValue="#{item.id}" /> -->
+<!-- 						</p:selectManyMenu> -->
+
+
+
+
+
+
+						<p:outputPanel layout="block" style="text-align:center">
+							<br />
+							<br />
+							<p:commandButton value="Reset" styleClass=""
+								update=":form1:panel" process="@this"
+								actionListener="#{customerMB.reset}" />
+							<p:commandButton value="Save" styleClass=""
+								actionListener="#{customerMB.save}"
+								update=":form1:messages, :form1:panel" />
+						</p:outputPanel>
+
+
+
+					</h:panelGrid>
+
+
+
+
+
+
+
+
+
+
+
+				</p:panel>
+
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
