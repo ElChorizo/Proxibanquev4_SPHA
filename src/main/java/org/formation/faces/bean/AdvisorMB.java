@@ -68,9 +68,9 @@ public class AdvisorMB {
 //	  
 //			advisor.persist(this.bean);
 //			refreshList();
-//			notificationSuccess("persist item");
+//			notificationSuccess("persist advisor");
 //		} catch (Exception e) {
-//			notificationError(e,"persist item");
+//			notificationError(e,"persist advisor");
 //			
 //			e.printStackTrace();
 //		}

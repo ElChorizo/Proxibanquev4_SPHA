@@ -14,7 +14,7 @@
 
 				<p:growl id="messages" showDetail="true" life="3000" />
 				<p:dataTable id="objects" var="object" value="#{advisorMB.list}"
-					styleClass="et_datatable" emptyMessage="Empty..." editable="true"
+					styleClass="et_datatable" emptyMessage="Pas de conseiller existant" editable="true"
 					paginator="true" rows="10"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15" selectionMode="single"
@@ -37,7 +37,7 @@
 							oncomplete="PF('confirmDeleteDlg').show()"
 							 title="Delete">
 							<f:setPropertyActionListener value="#{object}"
-								target="#{customerMB.beanSelected}" />
+								target="#{advisorMB.beanSelected}" />
 							<h:outputText styleClass="ui-icon ui-icon-close" />
 						</p:commandLink>
 					</p:column>
@@ -47,7 +47,7 @@
 							oncomplete="PF('detailsDlg').show()"
 							image="ui-icon ui-icon-search" title="Details">
 							<f:setPropertyActionListener value="#{object}"
-								target="#{customerMB.beanSelected}" />
+								target="#{advisorMB.beanSelected}" />
 							<h:outputText styleClass="ui-icon ui-icon-search" />
 						</p:commandLink>
 					</p:column>
@@ -64,7 +64,7 @@
 					<p:outputPanel layout="block" style="text-align:center">
 						<p:commandButton value="Confirmer"
 							update=":form1:messages,:form1:objects"
-							actionListener="#{customerMB.delete}"
+							actionListener="#{advisorMB.delete}"
 							oncomplete="PF('confirmDeleteDlg').hide()" />
 						<p:commandButton value="Annuler"
 							onclick="PF('confirmDeleteDlg').hide()" type="button" />
@@ -81,7 +81,7 @@
 					<h:panelGrid id="display" columns="2" cellpadding="4"
 						style="margin:0 auto;">
 
-						<h:outputText value="Nom" for="customer"
+						<h:outputText value="Nom" for="advisor"
 							style="padding-left: 30px; padding-right: 30px;" />
 
 						<p:inputText id="name" value="#{advisorMB.beanSelected.name}"

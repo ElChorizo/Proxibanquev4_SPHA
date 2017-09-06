@@ -13,9 +13,11 @@ import javax.faces.context.FacesContext;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.formation.dao.CustomerDao;
-
+import org.formation.model.Account;
+import org.formation.model.CheckingAccount;
 import org.formation.model.Customer;
-
+import org.formation.model.SavingsAccount;
+import org.formation.service.IServiceAccount;
 import org.formation.service.IServiceCustomer;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.RowEditEvent;
@@ -34,16 +36,15 @@ public class CustomerMB implements Serializable{
 	
 	@Autowired
 	IServiceCustomer customer;
-//	CustomerDao customer;
 	
-//	@Autowired
-//	ItemsDao itemService;
+	@Autowired
+	IServiceAccount serviceAccount;
 	
 	private Customer bean;
 	private Customer beanSelected;
 	private List<Customer> list;
 	private List<Customer> listSelected;
-//	private List<String> listAccount;
+	private List<String> listAccount;
 	
 	
 	
@@ -58,7 +59,7 @@ public class CustomerMB implements Serializable{
 		this.beanSelected = new Customer();
 		this.list = new ArrayList<Customer>();
 		this.listSelected = new ArrayList<Customer>();
-//		this.listAccount = new ArrayList<String>();
+		this.listAccount = new ArrayList<String>();
 		try {
 			this.list.addAll(customer.findAll());
 			this.listSelected.addAll(list);
@@ -70,7 +71,10 @@ public class CustomerMB implements Serializable{
 	
 	public void save() {
 		try {
-	  
+			Account check = new CheckingAccount();
+			Account savings = new SavingsAccount();
+			this.bean.addAccount(check);
+			this.bean.addAccount(savings);
 			customer.persist(this.bean);
 			System.out.println(this.bean);
 			refreshList();
@@ -82,27 +86,6 @@ public class CustomerMB implements Serializable{
 		}
 	}
 
-	
-	
-//	public void save() {
-//		try { 
-//			for(String customerId : listCustomer){
-//				Customer c = new Customer();
-////				Item item = new Item();
-//				c = customer.findById(Long.parseLong(customerId));
-//				
-////				this.bean.getItems().add(item);
-//			}
-//			this.bean.setOrderDate(new Date());
-//			// Use merge instead of persist or you'll have a org.hibernate.PersistentObjectException: detached entity passed to persist: org.slevin.common.Item
-//			orderService.merge(this.bean);
-//			refreshList();
-//			notificationSuccess("persist order");
-//		} catch (Exception e) {
-//			notificationError(e,"persist order");
-//			e.printStackTrace();
-//		}
-//	}
 	
 	public void update() {
 		try {
@@ -151,43 +134,40 @@ public class CustomerMB implements Serializable{
 	}
 	
 	
-//	public List<Item> getAllItems() {
-//		List<Item> tmpList = new ArrayList<Item>();
-//		try {
-//			tmpList.addAll(itemService.findAll());
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return tmpList;
-//	}
+	public List<Account> getAllAccounts() {
+		List<Account> tmpList = new ArrayList<Account>();
+		try {
+			tmpList.addAll(serviceAccount.findAll());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tmpList;
+	}
 
 
-	
 	public IServiceCustomer getCustomer() {
 		return customer;
 	}
-	
-	
+
+
 	public void setCustomer(IServiceCustomer customer) {
 		this.customer = customer;
 	}
 
-	public Customer getBean() {
-		return bean;
+
+	public IServiceAccount getServiceAccount() {
+		return serviceAccount;
 	}
 
 
+	public void setServiceAccount(IServiceAccount serviceAccount) {
+		this.serviceAccount = serviceAccount;
+	}
 
 
-//	public CustomerDao getCustomer() {
-//		return customer;
-//	}
-//
-//
-//	public void setCustomer(CustomerDao customer) {
-//		this.customer = customer;
-//	}
+	public Customer getBean() {
+		return bean;
+	}
 
 
 	public void setBean(Customer bean) {
@@ -225,29 +205,16 @@ public class CustomerMB implements Serializable{
 	}
 
 
-//	public ItemsDao getItemService() {
-//		return itemService;
-//	}
-//
-//
-//	public void setItemService(ItemsDao itemService) {
-//		this.itemService = itemService;
-//	}
+	public List<String> getListAccount() {
+		return listAccount;
+	}
 
 
-//	public List<String> getListItem() {
-//		return listItem;
-//	}
-//
-//
-//	public void setListItem(List<String> listItem) {
-//		this.listItem = listItem;
-//	}
+	public void setListAccount(List<String> listAccount) {
+		this.listAccount = listAccount;
+	}
 
 
 	
 	
-	
-	
-
 }
