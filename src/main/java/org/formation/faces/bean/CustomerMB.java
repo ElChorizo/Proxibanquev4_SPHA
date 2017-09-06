@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Level;
@@ -214,7 +215,12 @@ public class CustomerMB implements Serializable{
 		this.listAccount = listAccount;
 	}
 
-
+	public String logOut() {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = facesContext.getExternalContext();
+		externalContext.invalidateSession();
+		return "home?faces-redirect=true";
+	}
 	
 	
 }
