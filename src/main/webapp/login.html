@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login Form</title>
+    <style type="text/css">
+body {
+	text-align: center;
+	width: 50%;
+	margin: 0 auto;
+}
+</style>
+    </head>
+    <body>
+        <h2>Bonjour, veuillez vous indentifier :</h2>
+        <form name="loginForm" method="POST" action="j_security_check">
+            <p><strong>Entrer votre nom : </strong>
+                <input type="text" name="j_username" size="25"/></p>
+            <p><strong>Entrer votre mot de passe : </strong>
+                <input type="password" size="15" name="j_password"/></p>
+            <p>
+                <input type="submit" value="Valider"/>
+                <input type="reset" value="Réinitialiser"/></p>
+        </form>       
+    </body>
+</html>
