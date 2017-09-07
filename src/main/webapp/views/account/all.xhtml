@@ -20,7 +20,9 @@
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15" selectionMode="single"
 					rowKey="#{object.accountNumber}">
-
+					<f:facet name="header">
+            Liste des comptes
+        </f:facet>
 					<p:column headerText="Numéro de compte"
 						sortBy="#{object.accountNumber}">
 						<h:outputText value="#{object.accountNumber}" />
@@ -101,7 +103,7 @@
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.customer.town}"
 							style="padding-left: 30px; padding-right: 30px;" />
-	
+
 						<h:outputText value="Numéro de compte"
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.accountNumber}"
@@ -110,7 +112,7 @@
 
 						<h:outputText value="Date d'ouverture"
 							style="padding-left: 30px; padding-right: 30px;" />
-			
+
 						<h:outputText value="#{accountMB.beanSelected.date}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
@@ -129,7 +131,7 @@
 							type="button" />
 					</p:outputPanel>
 
-	
+
 
 				</p:dialog>
 

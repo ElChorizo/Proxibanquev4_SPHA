@@ -19,7 +19,9 @@
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15" selectionMode="single"
 					rowKey="#{object.id}">
-
+					<f:facet name="header">
+            Liste des conseillers
+        </f:facet>
 					<p:column headerText="Nom" sortBy="#{object.name}">
 						<h:outputText value="#{object.name}" />
 					</p:column>
@@ -53,8 +55,7 @@
 				</p:dataTable>
 
 
-				<p:dialog
-					header="Etes vous sûr de vouloir supprimer ce conseiller?"
+				<p:dialog header="Etes vous sûr de vouloir supprimer ce conseiller?"
 					widgetVar="confirmDeleteDlg" resizable="false" width="400"
 					height="60" showEffect="clip" hideEffect="clip" modal="true">
 
@@ -87,7 +88,7 @@
 							<f:validateRegex
 								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
 							<f:validateLength minimum="2" maximum="30" />
-							
+
 						</p:inputText>
 
 						<h:outputText value="Prénom"
@@ -99,10 +100,10 @@
 							<f:validateRegex
 								pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s-]+$" />
 							<f:validateLength minimum="2" maximum="30" />
-							
+
 						</p:inputText>
 
-			
+
 						<h:inputHidden value="#{advisorMB.beanSelected.id}" />
 					</h:panelGrid>
 
