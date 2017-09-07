@@ -101,8 +101,41 @@
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.customer.town}"
 							style="padding-left: 30px; padding-right: 30px;" />
+						<h:outputText value="Numéro de compte:"
+							style="padding-left: 30px; padding-right: 30px;" />
+						<h:outputText value="#{accountMB.beanSelected.accountNumber}"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<h:outputText value="Numéro de compte"
+							style="padding-left: 30px; padding-right: 30px;" />
+
+						<p:inputText value="#{accountMB.beanSelected.accountNumber}" />
+
+
+
+						<h:outputText value="Date d'ouverture"
+							style="padding-left: 30px; padding-right: 30px;" />
+						<p:inputText value="#{accountMB.beanSelected.date}" />
+
+
+						<h:outputText value="Solde"
+							style="padding-left: 30px; padding-right: 30px;" />
+						<p:inputText value="#{accountMB.beanSelected.balance}" />
 
 					</h:panelGrid>
+
+					<p:outputPanel layout="block" style="text-align:center">
+						<br />
+						<br />
+						<p:commandButton value="Editer"
+							update=":form1:objects, :form1:messages"
+							actionListener="#{accountMB.update}"
+							oncomplete="PF('detailsDlg').hide()" />
+						<p:commandButton value="Annuler" onclick="PF('detailsDlg').hide()"
+							type="button" />
+					</p:outputPanel>
+
+	
 
 				</p:dialog>
 
