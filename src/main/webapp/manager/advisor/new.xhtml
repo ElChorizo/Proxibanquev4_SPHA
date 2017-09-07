@@ -44,46 +44,7 @@
 							<f:validateLength minimum="2" />
 						</p:inputText>
 
-						
-							
-
-						<h:outputLabel value="Clients" />
-
-						<p:selectManyMenu id="Customers" value="#{advisorMB.listCustomer}"
-							showCheckbox="true" style="width:250px;height:200px">
-							<f:selectItems value="#{advisorMB.allCustomers}" var="customer"
-								itemLabel="#{customer.name}" itemValue="#{customer.id}" />
-						</p:selectManyMenu>
-
-
-
-
-
-
-						<p:outputPanel layout="block" style="text-align:center">
-							<br />
-							<br />
-							<p:commandButton value="Annuler" styleClass=""
-								update=":form1:panel" process="@this"
-								actionListener="#{advisorMB.reset}" />
-							<p:commandButton value="Valider" styleClass=""
-								actionListener="#{advisorMB.save}"
-								update=":form1:messages, :form1:panel" />
-						</p:outputPanel>
-
-
-
 					</h:panelGrid>
-
-
-
-
-
-
-
-
-
-
 
 				</p:panel>
 
