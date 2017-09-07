@@ -17,9 +17,4 @@ public interface EntityDao<E> {
 	
 	List<E> findByProperty(String prop, Object val) throws Exception;
 	
-	List<E> findInRange(int firstResult, int maxResults) throws Exception;
-	
-	long count() throws Exception;
-	
-	
 }

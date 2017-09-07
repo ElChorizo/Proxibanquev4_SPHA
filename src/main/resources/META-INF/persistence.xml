@@ -7,8 +7,7 @@
 	<persistence-unit name="persistenceUnit"
 		transaction-type="RESOURCE_LOCAL">
 
-		<class>org.formation.model.Item</class>
-		<class>org.formation.model.Order</class>
+
 		<class>org.formation.model.Customer</class>
 
 		<class>org.formation.model.Advisor</class>

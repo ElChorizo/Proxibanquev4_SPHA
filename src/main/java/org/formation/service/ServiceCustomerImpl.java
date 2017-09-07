@@ -50,18 +50,6 @@ public class ServiceCustomerImpl implements IServiceCustomer {
 		return customer.findByProperty(prop, val);
 	}
 
-	@Override
-	public List<Customer> findInRange(int firstResult, int maxResults) throws Exception {
-		
-		return customer.findInRange(firstResult, maxResults);
-	}
-
-	@Override
-	public long count() throws Exception {
-		
-		return 0;
-	}
-
 
 	
 

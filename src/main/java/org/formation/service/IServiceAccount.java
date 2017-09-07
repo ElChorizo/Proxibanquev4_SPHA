@@ -18,9 +18,5 @@ public interface IServiceAccount {
 
 	List<Account> findByProperty(String prop, Object val) throws Exception;
 
-	List<Account> findInRange(int firstResult, int maxResults) throws Exception;
-
-	long count() throws Exception;
-
 	
 }

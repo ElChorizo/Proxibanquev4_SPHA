@@ -93,37 +93,17 @@
 							validatorMessage="Seuls les chiffres sont autorisés.">
 							<f:validateRegex pattern="^[_0-9]+$" />
 						</p:inputText>
-
-<!-- 						<h:outputLabel for="Items" value="Items " /> -->
-
-<!-- 						<p:selectManyMenu id="Items" value="#{orderMB.listItem}" -->
-<!-- 							showCheckbox="true" style="width:250px;height:200px"> -->
-<!-- 							<f:selectItems value="#{orderMB.allItems}" var="item" -->
-<!-- 								itemLabel="#{item.product}" itemValue="#{item.id}" /> -->
-<!-- 						</p:selectManyMenu> -->
-
-
-
-
-
-
 						<p:outputPanel layout="block" style="text-align:center">
 							<br />
 							<br />
-							<p:commandButton value="Reset" styleClass=""
+							<p:commandButton value="Annuler" styleClass=""
 								update=":form1:panel" process="@this"
 								actionListener="#{customerMB.reset}" />
-							<p:commandButton value="Save" styleClass=""
+							<p:commandButton value="Enregistrer" styleClass=""
 								actionListener="#{customerMB.save}"
 								update=":form1:messages, :form1:panel" />
 						</p:outputPanel>
-
-
-
 					</h:panelGrid>
-
-
-
 				</p:panel>
 
 			</h:form>

@@ -15,10 +15,4 @@ void persist(Advisor a) throws Exception;
 	Advisor findById(Long id) throws Exception;
 	
 	List<Advisor> findAll() throws Exception;
-	
-	List<Advisor> findByProperty(String prop, Object val) throws Exception;
-	
-	List<Advisor> findInRange(int firstResult, int maxResults) throws Exception;
-	
-	long count() throws Exception;
 }

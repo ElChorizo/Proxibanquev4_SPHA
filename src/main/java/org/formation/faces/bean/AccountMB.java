@@ -12,7 +12,7 @@ import javax.faces.context.FacesContext;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.formation.model.Account;
-import org.formation.model.Customer;
+
 import org.formation.service.IServiceAccount;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.RowEditEvent;

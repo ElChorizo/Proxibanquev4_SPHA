@@ -43,22 +43,4 @@ public class ServiceAdvisorImpl implements IServiceAdvisor{
 		return advisor.findAll();
 	}
 
-	@Override
-	public List<Advisor> findByProperty(String prop, Object val) throws Exception {
-		
-		return advisor.findByProperty(prop, val);
-	}
-
-	@Override
-	public List<Advisor> findInRange(int firstResult, int maxResults) throws Exception {
-		
-		return advisor.findInRange(firstResult, maxResults);
-	}
-
-	@Override
-	public long count() throws Exception {
-		
-		return 0;
-	}
-
 }

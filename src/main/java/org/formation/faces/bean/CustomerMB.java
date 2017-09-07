@@ -2,7 +2,7 @@ package org.formation.faces.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -13,7 +13,7 @@ import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.formation.dao.CustomerDao;
+
 import org.formation.model.Account;
 import org.formation.model.CheckingAccount;
 import org.formation.model.Customer;

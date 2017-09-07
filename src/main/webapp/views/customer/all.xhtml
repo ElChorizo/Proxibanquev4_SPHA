@@ -136,7 +136,7 @@
 
 						<p:inputText value="#{customerMB.beanSelected.cp}" label="Code postal"
 							requiredMessage="Champ obligatoire"
-							validatorMessage="Seuls les chiffres sont autorisés.">
+							validatorMessage="Veuillez saisir 5 chiffres.">
 							<f:validateRegex pattern="^[_0-9]+$" />
 							<f:validateLength minimum="5" maximum="5" />
 						</p:inputText>
@@ -169,7 +169,7 @@
 
 						<p:inputText value="#{customerMB.beanSelected.tel}" label="Téléphone"
 							requiredMessage="Champ obligatoire"
-							validatorMessage="Seuls les chiffres sont autorisés.">
+							validatorMessage="Veuillez saisir 10 chiffres.">
 							<f:validateRegex pattern="^[_0-9]+$" />
 							<f:validateLength minimum="10" maximum="10" />
 						</p:inputText>

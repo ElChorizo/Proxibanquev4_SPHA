@@ -44,17 +44,6 @@ public class ServiceAccountImpl implements IServiceAccount {
 
 
 	@Override
-	public List<Account> findInRange(int firstResult, int maxResults) throws Exception {
-		return accountDao.findInRange(firstResult, maxResults);
-	}
-
-	@Override
-	public long count() throws Exception {
-		
-		return 0;
-	}
-
-	@Override
 	public List<Account> findByProperty(String prop, Object val) throws Exception {
 		return accountDao.findByProperty(prop, val);
 		

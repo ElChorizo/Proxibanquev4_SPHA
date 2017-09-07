@@ -17,7 +17,4 @@ public interface IServiceCustomer {
 
 	List<Customer> findByProperty(String prop, Object val) throws Exception;
 
-	List<Customer> findInRange(int firstResult, int maxResults) throws Exception;
-
-	long count() throws Exception;
 }
