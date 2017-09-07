@@ -44,6 +44,17 @@
 							<f:validateLength minimum="2" />
 						</p:inputText>
 
+						<p:outputPanel layout="block" style="text-align:center">
+							<br />
+							<br />
+							<p:commandButton value="Annuler" styleClass=""
+								update=":form1:panel" process="@this"
+								actionListener="#{advisorMB.reset}" />
+							<p:commandButton value="Valider" styleClass=""
+								actionListener="#{advisorMB.save}"
+								update=":form1:messages, :form1:panel" />
+						</p:outputPanel>
+
 					</h:panelGrid>
 
 				</p:panel>
