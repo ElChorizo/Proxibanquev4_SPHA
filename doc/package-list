@@ -1,0 +1,6 @@
+org.formation.dao
+org.formation.dao.impl
+org.formation.faces.bean
+org.formation.model
+org.formation.service
+org.formation.tests

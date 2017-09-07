@@ -13,6 +13,11 @@ import org.formation.dao.EntityDao;
 import org.hibernate.HibernateException;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * @author AL, SRL, PHL Cette classe assure la liaison entre l'application et sa
+ *         base de données. Les classes AccountImpl, AdvisorDaoImpl, et
+ *         CustomerDaoImpl héritent de cette classe.
+ */
 public class EntityDaoImpl<E> implements EntityDao<E> {
 
 	@PersistenceContext(unitName = "persistenceUnit")
@@ -21,26 +26,43 @@ public class EntityDaoImpl<E> implements EntityDao<E> {
 	protected E instance;
 	private Class<E> entityClass;
 
+	/**
+	 * Cette méthode permet d'ajouter un nouvel élément en base de données.
+	 */
 	@Transactional
 	public void persist(E e) throws HibernateException {
 		getEntityManager().persist(e);
 	}
 
+	/**
+	 * Cette méthode permet de mettre à jour un élément existant en base de données.
+	 */
 	@Transactional
 	public void merge(E e) throws HibernateException {
 		getEntityManager().merge(e);
 	}
 
+	/**
+	 * Cette méthode permet de supprimer un élément existant en base de données.
+	 */
 	@Transactional
 	public void remove(Object id) throws Exception {
 		getEntityManager().remove((E) getEntityManager().find(getEntityClass(), id));
 	}
 
+	/**
+	 * Cette méthode permet de trouver en base de données et de transmettre un
+	 * élément en fonction de son id.
+	 */
 	@Transactional(readOnly = true)
 	public E findById(Object id) throws Exception {
 		return (E) getEntityManager().find(getEntityClass(), id);
 	}
 
+	/**
+	 * Cette méthode permet de trouver en base de données et de transmettre tous les
+	 * éléments d'une table.
+	 */
 	@Transactional(readOnly = true)
 	@SuppressWarnings("unchecked")
 	public List<E> findAll() throws Exception {
@@ -48,6 +70,12 @@ public class EntityDaoImpl<E> implements EntityDao<E> {
 				.getResultList();
 	}
 
+	/**
+	 * Cette méthode permet de trouver des éléments en base de données en fonction
+	 * de la valeur d'un de leurs attributs, et de les retourner à la méthode qui
+	 * l'appelle.
+	 *
+	 */
 	@Transactional(readOnly = true)
 	@SuppressWarnings("unchecked")
 	public List<E> findByProperty(String prop, Object val) throws Exception {

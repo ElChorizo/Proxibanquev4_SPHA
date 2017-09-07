@@ -23,6 +23,10 @@ import org.primefaces.event.RowEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author AL, SRL, PHL
+ *
+ */
 @Component(value = "advisorMB")
 @ViewScoped
 public class AdvisorMB implements Serializable {
@@ -49,6 +53,11 @@ public class AdvisorMB implements Serializable {
 		refreshList();
 	}
 
+	/**
+	 * Cette méthode permet de charger le contenu et d'actualiser les pages web qui
+	 * l'appellent (notamment la page manager/advisor/all.xhtml,
+	 * manager/advisor/new.xhtml)
+	 */
 	public void refreshList() {
 		this.bean = new Advisor();
 		this.beanSelected = new Advisor();
@@ -64,7 +73,9 @@ public class AdvisorMB implements Serializable {
 		}
 	}
 
-
+	/**
+	 * Cette méthode permet de sauvegarder un nouveau conseiller en base de données.
+	 */
 	public void save() {
 		try {
 			for (String customerId : listCustomer) {
@@ -82,6 +93,10 @@ public class AdvisorMB implements Serializable {
 		}
 	}
 
+	/**
+	 * Cette méthode permet de mettre à jour les informations d'un conseiller
+	 * existant en base de données.
+	 */
 	public void update() {
 		try {
 			advisor.merge(this.beanSelected);
@@ -93,6 +108,10 @@ public class AdvisorMB implements Serializable {
 		}
 	}
 
+	/**
+	 * Cette méthode permet de supprimer un conseiller en base de données, et de
+	 * mettre à jour les pages web associées.
+	 */
 	public void delete() {
 		try {
 			advisor.remove(this.beanSelected.getId());
@@ -107,11 +126,19 @@ public class AdvisorMB implements Serializable {
 		refreshList();
 	}
 
+	/**
+	 * Cette méthode est appelée lorsque l'utilisateur se sert de la fonction
+	 * "annuler" dans les formulaires. Le formulaire revient à son état initial.
+	 */
 	public void reset() {
 		refreshList();
 		RequestContext.getCurrentInstance().reset("form1:panel");
 	}
 
+	/**
+	 * Cette méthode permet de signaler qu'une opération (par exemple supprimer un
+	 * conseiller) a été effectuée avec succès.
+	 */
 	public void notificationSuccess(String operation) {
 		Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Operation " + operation + " success");
 		FacesMessage msg = null;
@@ -119,6 +146,11 @@ public class AdvisorMB implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
+	/**
+	 * Cette méthode permet de signaler qu'une erreur est survenue lors d'une
+	 * opération (par exemple, ajouter un client)
+	 *
+	 */
 	public void notificationError(Exception e, String operation) {
 		Logger.getLogger(this.getClass().getName()).log(Level.ERROR, "Operation " + operation + " Error ", e);
 		FacesMessage msg = null;

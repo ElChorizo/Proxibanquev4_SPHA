@@ -12,29 +12,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * @author AL, SRL, PHL
+ *
+ */
 @Entity
-@Table(name="Advisor")
+@Table(name = "Advisor")
 public class Advisor {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String firstname;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="ID_ADVISOR")
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID_ADVISOR")
 	private Collection<Customer> customers = new LinkedHashSet<Customer>();
 
 	public Advisor() {
 		super();
-	
+
 	}
 
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -63,5 +67,4 @@ public class Advisor {
 		this.customers = customers;
 	}
 
-	
 }

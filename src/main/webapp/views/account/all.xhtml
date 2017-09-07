@@ -81,57 +81,51 @@
 
 					<h:panelGrid id="display" columns="2" cellpadding="4"
 						style="margin:0 auto; text-align:center" layout="block">
-						<h:outputText value="Nom: "
+						<h:outputText value="Nom "
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.customer.name}"
 							style="padding-left: 30px; padding-right: 30px;" />
-						<h:outputText value="Prénom: "
+						<h:outputText value="Prénom "
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.customer.firstname}"
 							style="padding-left: 30px; padding-right: 30px;" />
-						<h:outputText value="Adresse: "
+						<h:outputText value="Adresse "
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.customer.address}"
 							style="padding-left: 30px; padding-right: 30px;" />
-						<h:outputText value="Code postal: "
+						<h:outputText value="Code postal "
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.customer.cp}"
 							style="padding-left: 30px; padding-right: 30px;" />
-						<h:outputText value="Ville: "
+						<h:outputText value="Ville "
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.customer.town}"
 							style="padding-left: 30px; padding-right: 30px;" />
-						<h:outputText value="Numéro de compte:"
+	
+						<h:outputText value="Numéro de compte"
 							style="padding-left: 30px; padding-right: 30px;" />
 						<h:outputText value="#{accountMB.beanSelected.accountNumber}"
 							style="padding-left: 30px; padding-right: 30px;" />
 
-						<h:outputText value="Numéro de compte"
-							style="padding-left: 30px; padding-right: 30px;" />
-
-						<p:inputText value="#{accountMB.beanSelected.accountNumber}" />
-
-
 
 						<h:outputText value="Date d'ouverture"
 							style="padding-left: 30px; padding-right: 30px;" />
-						<p:inputText value="#{accountMB.beanSelected.date}" />
+			
+						<h:outputText value="#{accountMB.beanSelected.date}"
+							style="padding-left: 30px; padding-right: 30px;" />
 
 
 						<h:outputText value="Solde"
 							style="padding-left: 30px; padding-right: 30px;" />
-						<p:inputText value="#{accountMB.beanSelected.balance}" />
+						<h:outputText value="#{accountMB.beanSelected.balance}"
+							style="padding-left: 30px; padding-right: 30px;" />
 
 					</h:panelGrid>
 
 					<p:outputPanel layout="block" style="text-align:center">
 						<br />
 						<br />
-						<p:commandButton value="Editer"
-							update=":form1:objects, :form1:messages"
-							actionListener="#{accountMB.update}"
-							oncomplete="PF('detailsDlg').hide()" />
-						<p:commandButton value="Annuler" onclick="PF('detailsDlg').hide()"
+						<p:commandButton value="Fermer" onclick="PF('detailsDlg').hide()"
 							type="button" />
 					</p:outputPanel>
 

@@ -25,13 +25,14 @@ import org.primefaces.event.RowEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author AL, SRL, PHL
+ *
+ */
 @Component(value = "customerMB")
 @ViewScoped
 public class CustomerMB implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
@@ -52,9 +53,14 @@ public class CustomerMB implements Serializable {
 	@PostConstruct
 	public void init() {
 		refreshList();
-		
+
 	}
 
+	/**
+	 * Cette méthode permet de charger le contenu et d'actualiser les pages web qui
+	 * l'appellent (notamment la page views/customer/all.xhtml,
+	 * views/customer/new.xhtml)
+	 */
 	public void refreshList() {
 		this.bean = new Customer();
 		this.beanSelected = new Customer();
@@ -70,6 +76,10 @@ public class CustomerMB implements Serializable {
 		}
 	}
 
+	/**
+	 * Cette méthode permet de sauvegarder un nouveau client en base de données, en
+	 * lui associant un compte épargne et un compte courant.
+	 */
 	public void save() {
 		try {
 			Account check = new CheckingAccount();
@@ -86,6 +96,11 @@ public class CustomerMB implements Serializable {
 		}
 	}
 
+	/**
+	 * Cette méthode permet de mettre à jour les informations d'un client existant
+	 * en base de données. La mise à jour est affichée dans la liste des clients
+	 * grâce à l'appel à la méthode refreshList().
+	 */
 	public void update() {
 		try {
 			customer.merge(this.beanSelected);
@@ -98,6 +113,10 @@ public class CustomerMB implements Serializable {
 		}
 	}
 
+	/**
+	 * Cette méthode permet de supprimer un client existant en base de données, et
+	 * les comptes associés.
+	 */
 	public void delete() {
 		try {
 			customer.remove(this.beanSelected.getId());
@@ -113,11 +132,19 @@ public class CustomerMB implements Serializable {
 		refreshList();
 	}
 
+	/**
+	 * Cette méthode est appelée lorsque l'utilisateur se sert de la fonction
+	 * "annuler" dans les formulaires. Le formulaire revient à son état initial.
+	 */
 	public void reset() {
 		refreshList();
 		RequestContext.getCurrentInstance().reset("form1:panel");
 	}
 
+	/**
+	 * Cette méthode permet de signaler qu'une opération (par exemple supprimer un
+	 * client) a été effectuée avec succès.
+	 */
 	public void notificationSuccess(String operation) {
 		Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Operation " + operation + " success");
 		FacesMessage msg = null;
@@ -125,6 +152,11 @@ public class CustomerMB implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
+	/**
+	 * Cette méthode permet de signaler qu'une erreur est survenue lors d'une
+	 * opération (par exemple, ajouter un client)
+	 *
+	 */
 	public void notificationError(Exception e, String operation) {
 		Logger.getLogger(this.getClass().getName()).log(Level.ERROR, "Operation " + operation + " Error ", e);
 		FacesMessage msg = null;
@@ -198,6 +230,10 @@ public class CustomerMB implements Serializable {
 		this.listAccount = listAccount;
 	}
 
+	/**
+	 * Cette méthode permet de se déconnecter. L'utilisateur est redirigé vers la
+	 * page d'accueil.
+	 */
 	public String logOut() {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = facesContext.getExternalContext();

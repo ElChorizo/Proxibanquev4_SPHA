@@ -19,26 +19,33 @@ import org.primefaces.event.RowEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component(value="accountMB")
+/**
+ * @author AL, SRL, PHL
+ *
+ */
+@Component(value = "accountMB")
 @ViewScoped
-public class AccountMB implements Serializable{
-
+public class AccountMB implements Serializable {
 
 	private static final long serialVersionUID = -8645699749357040704L;
 
 	@Autowired
 	IServiceAccount accountService;
-	
+
 	private Account bean;
 	private Account beanSelected;
 	private List<Account> list;
 	private List<Account> listSelected;
-	
+
 	@PostConstruct
-    public void init() {
+	public void init() {
 		refreshList();
-    }
-	
+	}
+
+	/**
+	 * Cette méthode permet de charger le contenu et d'actualiser les pages web qui
+	 * l'appellent ( la page views/account/all.xhtml)
+	 */
 	public void refreshList() {
 		this.bean = new Account();
 		this.beanSelected = new Account();
@@ -48,55 +55,73 @@ public class AccountMB implements Serializable{
 			this.list.addAll(accountService.findAll());
 			this.listSelected.addAll(list);
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * Cette méthode permet de sauvegarder un nouveau compte en base de données.
+	 */
 	public void save() {
 		try {
-		    
+
 			accountService.persist(this.bean);
 			refreshList();
 			notificationSuccess("persist item");
 		} catch (Exception e) {
-			notificationError(e,"persist item");
+			notificationError(e, "persist item");
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * Cette méthode permet de supprimer un compte en base de données.
+	 */
 	public void delete() {
 		try {
 			accountService.remove(this.beanSelected.getAccountNumber());
 			refreshList();
 			notificationSuccess("delete order");
 		} catch (Exception e) {
-			notificationError(e,"delete order");
+			notificationError(e, "delete order");
 		}
 	}
-	
+
 	public void onCancel(RowEditEvent event) {
 		refreshList();
 	}
-	
+
+	/**
+	 * Cette méthode est appelée lorsque l'utilisateur se sert de la fonction
+	 * "annuler" dans les formulaires. Le formulaire revient à son état initial.
+	 */
 	public void reset() {
 		refreshList();
-        RequestContext.getCurrentInstance().reset("form1:panel");  
+		RequestContext.getCurrentInstance().reset("form1:panel");
 	}
-	
+
+	/**
+	 * Cette méthode permet de signaler qu'une opération (par exemple supprimer un
+	 * client) a été effectuée avec succès.
+	 */
 	public void notificationSuccess(String operation) {
-		Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Operation "+operation+" success");
-		FacesMessage msg = null;  
-		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Opération effectuée"); 
-		FacesContext.getCurrentInstance().addMessage(null, msg);  
+		Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Operation " + operation + " success");
+		FacesMessage msg = null;
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Opération effectuée");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
-
+	/**
+	 * Cette méthode permet de signaler qu'une erreur est survenue lors d'une
+	 * opération (par exemple, ajouter un client)
+	 *
+	 */
 	public void notificationError(Exception e, String operation) {
-		Logger.getLogger(this.getClass().getName()).log(Level.ERROR, "Operation "+operation+" Error ",e);
-		FacesMessage msg = null;  
-		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Une erreur est survenue");  
-		FacesContext.getCurrentInstance().addMessage(null, msg);  
+		Logger.getLogger(this.getClass().getName()).log(Level.ERROR, "Operation " + operation + " Error ", e);
+		FacesMessage msg = null;
+		msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Notification", "Une erreur est survenue");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
 	public Account getBean() {
@@ -130,7 +155,5 @@ public class AccountMB implements Serializable{
 	public void setListSelected(List<Account> listSelected) {
 		this.listSelected = listSelected;
 	}
-	
-	
-	
+
 }

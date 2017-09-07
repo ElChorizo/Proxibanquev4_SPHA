@@ -3,12 +3,16 @@ package org.formation.model;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+/**
+ * @author AL, SRL, PHL
+ *
+ */
 @Entity
 @DiscriminatorValue("savingsAccount")
-public class SavingsAccount extends Account{
-	
+public class SavingsAccount extends Account {
+
 	private double rates = 1.03;
-	
+
 	public SavingsAccount() {
 		super();
 	}
@@ -17,7 +21,6 @@ public class SavingsAccount extends Account{
 		super(date, balance, customer);
 	}
 
-	
 	public SavingsAccount(double rates) {
 		super();
 		this.rates = rates;
@@ -30,5 +33,5 @@ public class SavingsAccount extends Account{
 	public void setRates(double rates) {
 		this.rates = rates;
 	}
-	
+
 }
